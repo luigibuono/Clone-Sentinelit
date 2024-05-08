@@ -1,0 +1,21 @@
+.orange{
+  color: orange;
+  border-color: orange;
+  border-radius: 0px!important;
+  margin-bottom: 2rem;
+}
+
+.title1{
+  color: rgba(var(--vsm-white), 1);
+  font-size: 4.4rem;
+  font-weight: 800;
+  color: rgba(var(--vsm-tertiary-colour), 1);
+}
+
+.parag1{
+font-family: "Figtree", sans-serif;
+color: rgba(var(--vsm-black), 1);
+font-size: 19px;
+font-size: 1.1875rem;
+font-weight: 500;
+}

@@ -1,0 +1,96 @@
+<div class="banner">
+  <img src="../../../assets/gifHome.gif" alt="Immagine della home">
+  <div class="overlay"></div>
+  <div class="content">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white " style="position: fixed;" [class.colored__scrolled]="isScrolled" >
+      <div class="container">
+          <!-- Logo o voce a sinistra -->
+          <a class="navbar-brand" style="color: white;" href="#">
+             SENTINEL
+          </a>
+
+          <!-- Voci di menu sulla destra -->
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <div class="socials">
+                  <a class="nav-link active a" style="padding-right: 2rem;" aria-current="page" href="#"><i class="fa-solid fa-phone"></i></a>
+                  <a class="nav-link active a" style="padding-right: 2rem;" aria-current="page" href="#"><i class="fa-solid fa-user"></i></a>
+                  <a class="nav-link active a" aria-current="page" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+                <a class="nav-link active a elemento1" aria-current="page" href="#">Submit CV</a>
+                <a class="nav-link active a"  style="padding-left: 2rem;" aria-current="page" href="#"><i class="fa-solid fa-sliders"></i></a>
+              </ul>
+          </div>
+      </div>
+    </nav>
+
+
+
+
+    <div class="container altezza" #altezza *ngIf="showCont1">
+      <div class="jumbotron jumbotron-fluid" style="position: absolute; top: 825px; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.8); z-index: 0;">
+        <div class="container">
+              <h1 class="display-4" style="color: black;  "><b>We value your privacy</b></h1>
+              <div class="row">
+                <div class="col">
+                  <p class="lead" style="color: black;">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                </div>
+                <div class="col d-flex justify-content-end">
+                  <div class="buttons">
+                    <button type="button" class="btn">Customize</button>
+                    <button type="button" class="btn" (click)="close()">Reject All</button>
+                    <button type="button" class="btn bg-white" (click)="close()">Accept All</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="" style="padding-top: 20rem; color: white;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <!-- Contenuto della prima colonna -->
+            <h5 class="title1" style="text-align: left;">WE</h5>
+            <h5 class="title1" style="text-align: left;"><strong style="color:orange">/</strong>{{ testi[isActive].name }} </h5>
+            <p class="parag1" style="text-align: left;">While technology is essential to the success of today’s businesses, it’s people and human <br> connections that make extraordinary things happen.</p>
+            <form class="d-flex form1" role="search" style="width: 25rem;">
+              <input class="form-control me-2" type="search" placeholder="Search jobs" style="margin-right:0px!important; border-radius: 0px!important;" aria-label="Search">
+              <button class="btn orange" type="submit"><i class="fa-solid fa-magnifying-glass orange"></i></button>
+            </form>
+          </div>
+          <div class="col-md-8 align-self-end d-flex justify-content-end">
+            <!-- Contenuto della seconda colonna -->
+            <div class="buttons">
+              <button type="button" class="btn tab1">Connecting</button>
+              <button type="button" class="btn tab2">Candidate</button>
+              <button type="button" class="btn tab3">Employer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+
+<app-sezione1></app-sezione1>
+<app-sezione2></app-sezione2>
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

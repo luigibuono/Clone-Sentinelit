@@ -1,0 +1,27 @@
+.card-container {
+  white-space: nowrap;
+  padding-bottom: 30px; /* Spazio sotto per le frecce */
+  overflow-x: auto; /* Mostra la barra di scorrimento solo quando necessario */
+  overflow-y: hidden; /* Nasconde la barra di scorrimento verticale */
+}
+
+.card-text{
+  white-space: wrap;
+}
+
+/* Barra di scorrimento personalizzata per Chrome */
+.card-container::-webkit-scrollbar {
+  width: 8px; /* Larghezza della barra di scorrimento */
+  height: 8px;
+}
+
+.card-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); /* Colore di sfondo della traccia della barra di scorrimento */
+}
+
+.card-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5); /* Colore del cursore della barra di scorrimento */
+  border-radius: 4px; /* Bordo arrotondato */
+}
+
+
