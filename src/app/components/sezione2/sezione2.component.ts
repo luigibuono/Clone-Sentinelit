@@ -8,72 +8,52 @@ import { Card } from 'src/app/models/card';
 })
 export class Sezione2Component {
   @ViewChild('cardContainer') cardContainer!: ElementRef; // Riferimento al container delle card
+  @ViewChild('parent') slider!: ElementRef<HTMLElement>; // Definiamo il tipo di ElementRef come HTMLElement
 
   card = new Card();
+  mouseDown = false;
+  startX!: number;
+  scrollLeft!: number ;
+  isCardClicked = false;
+
+  scrollStep: number = 500; // Regola la quantità di scorrimento
+
+scrollCards(direction: 'left' | 'right'): void {
+  const container = this.cardContainer.nativeElement;
+  if (direction === 'left') {
+    container.scrollLeft -= this.scrollStep; // Scorri a sinistra
+    this.isCardClicked = false;
+  } else {
+    container.scrollLeft += this.scrollStep; // Scorri a destra
+    this.isCardClicked = false;
+  }
+}
 
 
-  scrollCards(direction: 'left' | 'right'): void {
-    const container = this.cardContainer.nativeElement;
-    const scrollStep = 300; // Regola la quantità di scorrimento
 
-    if (direction === 'left') {
-      container.scrollLeft -= scrollStep; // Scorri a sinistra
-    } else {
-      container.scrollLeft += scrollStep; // Scorri a destra
-    }
+
+  startDragging(e: MouseEvent, flag: boolean, slider: HTMLElement): void { // Specifichiamo il tipo di 'slider' come HTMLElement
+    console.log(e);
+    this.mouseDown = true;
+    this.startX = e.pageX - slider.offsetLeft;
+    this.scrollLeft = slider.scrollLeft;
+    this.isCardClicked = true;
   }
 
-  offsetX: number = 0;
-  offsetY: number = 0;
-  lastX: number = 0;
-  lastY: number = 0;
-  isDragging: boolean = false;
-  initialX: number = 0;
-  initialY: number = 0;
+  stopDragging(e: MouseEvent, flag: boolean): void {
+    this.mouseDown = false;
 
-  startDrag(event: MouseEvent | TouchEvent): void {
-    event.preventDefault();
-    this.isDragging = true;
-    if (event instanceof MouseEvent) {
-      this.initialX = event.clientX - this.offsetX;
-      this.initialY = event.clientY - this.offsetY;
-    } else if (event instanceof TouchEvent) {
-      const touch = event.touches[0];
-      this.initialX = touch.clientX - this.offsetX;
-      this.initialY = touch.clientY - this.offsetY;
-    }
   }
 
-  endDrag(): void {
-    this.isDragging = false;
-  }
-
-  onDrag(event: MouseEvent | TouchEvent): void {
-    if (!this.isDragging) return;
-    let newX: number = 0;
-
-    if (event instanceof MouseEvent) {
-      newX = event.clientX - this.initialX;
-    } else if (event instanceof TouchEvent) {
-      const touch = event.touches[0];
-      newX = touch.clientX - this.initialX;
+  moveEvent(e: MouseEvent, slider: HTMLElement): void { // Specificiamo il tipo di 'slider' come HTMLElement
+    e.preventDefault();
+    if (!this.mouseDown) {
+      return;
     }
-
-    const deltaX = newX - this.lastX;
-
-    // Scorrimento solo verso destra o sinistra
-    if (deltaX > 0) {
-      // Scorrimento verso destra
-      this.offsetX += Math.abs(deltaX);
-    } else {
-      // Scorrimento verso sinistra
-      this.offsetX -= Math.abs(deltaX);
-    }
-
-    // Aggiorna la posizione precedente
-    this.lastX = newX;
+    const x = e.pageX - slider.offsetLeft;
+    const scroll = x - this.startX;
+    slider.scrollLeft = this.scrollLeft - scroll;
   }
-
 
 
 }

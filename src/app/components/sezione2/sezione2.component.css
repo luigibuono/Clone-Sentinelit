@@ -25,3 +25,20 @@
 }
 
 
+
+
+.parent.clicked {
+  width: 1300px;
+  overflow-x: hidden;
+  float: left;
+}
+
+.child.clicked {
+  width: 1000px;
+  float: left;
+  font-size: 15px;
+  font-family: arial;
+  padding: 10px;
+  cursor: pointer;
+}
+
